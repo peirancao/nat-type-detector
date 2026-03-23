@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAT 类型检测器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>🌐 NAT 类型检测器</h1>
+      <p class="subtitle">检测您的网络环境，了解 P2P 连接难度</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Connection Status -->
+      <div id="connection-status" class="status-bar">
+        <span class="status-indicator offline"></span>
+        <span class="status-text">正在连接服务器...</span>
+      </div>
+
+      <!-- Detection Panel -->
+      <div id="detection-panel" class="panel">
+        <!-- Start Button View -->
+        <div id="start-view" class="view active">
+          <div class="logo">🔍</div>
+          <h2>开始检测</h2>
+          <p>点击下方按钮，系统将自动分析您的 NAT 网络类型</p>
+          <button id="start-btn" class="btn btn-primary">
+            <span class="btn-text">开始检测</span>
+            <span class="btn-loading" style="display: none;">
+              <span class="spinner"></span>
+              检测中...
+            </span>
+          </button>
+        </div>
+
+        <!-- Progress View -->
+        <div id="progress-view" class="view">
+          <div class="progress-container">
+            <div class="progress-circle">
+              <svg viewBox="0 0 100 100">
+                <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                <circle id="progress-ring" class="progress-ring" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="progress-text">
+                <span id="progress-percent">0</span>%
+              </div>
+            </div>
+          </div>
+          <h2 id="progress-title">正在连接服务器...</h2>
+          <p id="progress-desc">请保持网络连接</p>
+          <div class="probe-info">
+            <div class="probe-item">
+              <span class="probe-label">探针数量</span>
+              <span id="probe-count" class="probe-value">0 / 4</span>
+            </div>
+            <div class="probe-item">
+              <span class="probe-label">已用时间</span>
+              <span id="time-elapsed" class="probe-value">0s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result View -->
+        <div id="result-view" class="view">
+          <div id="result-icon" class="result-icon">⏳</div>
+          <h2 id="result-type">检测中...</h2>
+          <div id="result-difficulty" class="difficulty-badge">--</div>
+          
+          <div class="result-details">
+            <div class="detail-row">
+              <span class="detail-label">公网 IP</span>
+              <span id="result-ip" class="detail-value">--</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">映射端口</span>
+              <span id="result-port" class="detail-value">--</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">置信度</span>
+              <span id="result-confidence" class="detail-value">--</span>
+            </div>
+          </div>
+
+          <div id="result-description" class="description-box">
+            <p id="result-desc-text">--</p>
+          </div>
+
+          <div id="result-advice" class="advice-box">
+            <h4>💡 穿透建议</h4>
+            <p id="result-advice-text">--</p>
+          </div>
+
+          <div id="result-scenarios" class="scenarios-box">
+            <h4>🎯 适用场景</h4>
+            <ul id="result-scenarios-list">
+              <li>--</li>
+            </ul>
+          </div>
+
+          <button id="retry-btn" class="btn btn-secondary">重新检测</button>
+        </div>
+      </div>
+
+      <!-- Info Panel -->
+      <div class="info-panel">
+        <h3>什么是 NAT 类型？</h3>
+        <div class="nat-types-grid">
+          <div class="nat-type-card easy">
+            <div class="nat-icon">🟢</div>
+            <div class="nat-name">Open Internet</div>
+            <div class="nat-desc">无 NAT，最佳</div>
+          </div>
+          <div class="nat-type-card easy">
+            <div class="nat-icon">🟢</div>
+            <div class="nat-name">Full Cone</div>
+            <div class="nat-desc">容易穿透</div>
+          </div>
+          <div class="nat-type-card medium">
+            <div class="nat-icon">🟡</div>
+            <div class="nat-name">Restricted</div>
+            <div class="nat-desc">中等难度</div>
+          </div>
+          <div class="nat-type-card hard">
+            <div class="nat-icon">🟠</div>
+            <div class="nat-name">Port Restricted</div>
+            <div class="nat-desc">较难穿透</div>
+          </div>
+          <div class="nat-type-card very-hard">
+            <div class="nat-icon">🔴</div>
+            <div class="nat-name">Symmetric</div>
+            <div class="nat-desc">极难穿透</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>NAT Type Detector · 开源项目 · 仅供学习参考</p>
+    </footer>
+  </div>
+
+  <script src="js/detector.js"></script>
+</body>
+</html>

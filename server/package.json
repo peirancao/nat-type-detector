@@ -1,0 +1,21 @@
+{
+  "name": "nat-type-detector-server",
+  "version": "1.0.0",
+  "description": "NAT Type Detection Server using STUN and WebSocket",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "ws": "^8.16.0",
+    "dgram": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
